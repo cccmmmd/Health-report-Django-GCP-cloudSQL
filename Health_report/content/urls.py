@@ -3,8 +3,11 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('add/', views.add, name='add'), 
-    path('add/addreport/', views.addreport, name='addreport'), 
-    path('select/', views.select, name='select'), 
+    path('create/', views.add, name='add'), 
+    path('create/addreport/', views.addreport, name='addreport'), 
+    path('one_result/', views.one_result, name='one_result'), 
+    path('one_result/savereport', views.savereport, name='savereport'), 
+    path('reports/selectreport/', views.selectreport, name='selectreport'), 
+    path('reports/', views.select, name='select'), 
     path('analysis/', views.analysis, name='analysis'), 
 ]

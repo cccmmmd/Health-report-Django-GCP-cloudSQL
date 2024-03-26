@@ -1,11 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Report - Report analysis</title>
-</head>
-<body>
-    Report analysis
-</body>
-</html>
+{% extends 'basic.html'%}
+    {% block with_variables %}
+        {% with name="Analysis" %}
+            {{ block.super }}
+        {% endwith %}
+    {% endblock %}
+    {% block mymessage %}
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">歷年報告分析</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Analysis</li>
+            </ol>
+        </div>
+        <div class="container-fluid px-4">
+            <table border="1">
+                {% for r in selected_reports %} 
+                <tr>
+                    <td>{{ r.id }}</td>
+                    <td>{{ r.report_name }}</td>
+                    <td>{{ r.report_year }}</td>
+                    <td>{{ r.abstract }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>        
+    {% endblock %} 

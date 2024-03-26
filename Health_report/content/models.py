@@ -7,7 +7,7 @@ class User(models.Model):
   gender = models.CharField(max_length=30)
   
 class Report(models.Model):
-#   user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+#   user = models.ForeignKey(User, on_delete=models.CASCADE)
   report_name = models.CharField(max_length=50)
   report_year = models.IntegerField()
   diastolic_pressure = models.IntegerField()

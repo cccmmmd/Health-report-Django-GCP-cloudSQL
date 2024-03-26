@@ -1,0 +1,128 @@
+{% extends 'basic.html'%}
+    {% block with_variables %}
+        {% with name="Result" %}
+            {{ block.super }}
+        {% endwith %}
+    {% endblock %}
+    {% block mymessage %}
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">報告分析</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Result</li>
+            </ol>
+        </div>
+        <div class="container-fluid px-4">
+            <div class="mb-3 row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>健檢報告名稱:  </b>
+                            {{reports.report_name}}
+                        </div>
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>報告建立年度: </b>
+                            {{reports.report_year}}
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>舒張壓:  </b>
+                            {{reports.diastolic_pressure}}
+                        </div>
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>收縮壓: </b>
+                            {{reports.systolic_pressure}}
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>脈搏:  </b>
+                            {{reports.pulse}}
+                        </div>
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>飯前葡萄糖:  </b>
+                            {{reports.glucose_ac}}
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>血色素:  </b>
+                            {{reports.hba1c}}
+                        </div>
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>總膽固醇:  </b>
+                            {{reports.t_cho}}
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>三酸甘油脂:  </b>
+                            {{reports.tg}}
+                        </div>
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>高密度脂蛋白膽固醇:  </b>
+                            {{reports.hdl_c}}
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>低密度脂蛋白膽固醇:  </b>
+                            {{reports.ldl_c}}
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>ＬＬＭ生成摘要:  </b>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn  btn-lg btn-primary float-end" type="submit">關閉</button>
+        </div> 
+               
+    {% endblock %} 

@@ -1,7 +1,7 @@
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from .models import Report
+from .models import Report, User
 
 
 
@@ -10,8 +10,8 @@ def index(request):
     return HttpResponse(template.render({}, request))
 
 def add(request):
-  template = loader.get_template('add.html') 
-  return HttpResponse(template.render({}, request)) 
+    template = loader.get_template('add.html') 
+    return HttpResponse(template.render({}, request)) 
 
 def select(request):
     reports = Report.objects.all().values()
@@ -19,23 +19,41 @@ def select(request):
     context = {
         'reports': reports
     }
-    return HttpResponse(template.render(context, request)) 
+    return HttpResponse(template.render(context, request))
+ 
+def selectreport(request):
+    selected_reports = []
+    reports = Report.objects.all().values()
+    for r in reports:
+        if request.POST.get('report_%s' % r['id']):
+            selected_reports.append(r)
+
+    request.session['selected_reports'] = selected_reports
+   
+    return HttpResponseRedirect(reverse('analysis'))
 
 def addreport(request):
-    report_name = request.POST['report_name'] 
-    report_year = request.POST['report_year'] 
-    blood_pressure = request.POST['blood_pressure'] 
-    pulse = request.POST['pulse'] 
-    glucose_ac = request.POST['glucose_ac'] 
-    hba1c = request.POST['hba1c'] 
-    t_cho = request.POST['t_cho'] 
-    tg = request.POST['tg'] 
-    hdl_c = request.POST['hdl_c'] 
-    ldl_c = request.POST['ldl_c'] 
-    abstract = request.POST['abstract'] 
-    diastolic_pressure = blood_pressure.split("/")[0]
-    systolic_pressure = blood_pressure.split("/")[1]
+    report_data = {}
+    for p in request.POST:
+        report_data[p] = request.POST[p]
+    report_data['diastolic_pressure'] = request.POST['blood_pressure'].split("/")[1]
+    report_data['systolic_pressure'] = request.POST['blood_pressure'].split("/")[0]
+    request.session['report_data'] = report_data
+    
+    # member = Members(firstname=x, lastname=y) 
+    # member.save() 
+    return HttpResponseRedirect(reverse('one_result'))
 
+
+def one_result(request):    
+    template = loader.get_template('one_result.html')
+    context = {
+        'reports': request.session['report_data']
+    }
+    return HttpResponse(template.render(context, request)) 
+
+def savereport(request):
+    one_report = request.session['report_data']
     report = Report(
         report_name = report_name,
         report_year = report_year,
@@ -51,12 +69,14 @@ def addreport(request):
         abstract = abstract,
     )
     report.save()
-    # member = Members(firstname=x, lastname=y) 
-    # member.save() 
-    return HttpResponseRedirect(reverse('select'))
+    return HttpResponseRedirect(reverse('create'))
 
 
 def analysis(request):
-  template = loader.get_template('analysis.html') 
-  return HttpResponse(template.render({}, request)) 
+    template = loader.get_template('analysis.html') 
+    selected_reports = request.session['selected_reports']
+    context = {
+        'selected_reports': selected_reports
+    }
+    return HttpResponse(template.render(context, request)) 
 
