@@ -1,0 +1,9 @@
+{% extends 'basic.html'%}
+    {% block with_variables %}
+        {% with name="Assistant" %}
+            {{ block.super }}
+        {% endwith %}
+    {% endblock %}
+    {% block mymessage %}
+        <iframe class="embed-responsive-item" src="http://tibame-health-assistant.azurewebsites.net" style="width:100%; height: calc(100vh - 131px);"></iframe>
+    {% endblock %} 

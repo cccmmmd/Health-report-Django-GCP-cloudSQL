@@ -19,5 +19,17 @@ class Report(models.Model):
   tg = models.IntegerField()
   hdl_c = models.IntegerField()
   ldl_c = models.IntegerField()
-  abstract = models.TextField(max_length=200)
+  abstract = models.TextField(max_length=250)
+  created_at = models.DateTimeField(auto_now_add=True)
+
+
+class Arg(models.Model):
+  name = models.CharField(max_length=20)
+  e_name = models.CharField(max_length=20)
+  c_name = models.CharField(max_length=20)
+  max = models.IntegerField(blank=True, null=True)
+  min = models.IntegerField(blank=True, null=True)
+  m_min = models.IntegerField(blank=True, null=True)
+  f_min = models.IntegerField(blank=True, null=True)
+  unit = models.CharField(max_length=10)
   
