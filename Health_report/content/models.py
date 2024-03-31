@@ -19,7 +19,7 @@ class Report(models.Model):
   tg = models.IntegerField()
   hdl_c = models.IntegerField()
   ldl_c = models.IntegerField()
-  abstract = models.TextField(max_length=250)
+  abstract = models.TextField(max_length=400)
   created_at = models.DateTimeField(auto_now_add=True)
 
 

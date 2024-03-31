@@ -14,7 +14,7 @@
         <div class="container-fluid px-4">
             <form action="selectreport/" method="post">
                 {% csrf_token %}
-                <button class="btn  btn-lg btn-primary float-end" type="submit">送出</button>
+                <button class="btn  btn-lg btn-primary float-end" type="submit">產生報告</button>
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
@@ -38,7 +38,7 @@
                         {% endfor %}
                     </tbody>
                 </table>
-                <button class="btn  btn-lg btn-primary float-end mb-4" type="submit">送出</button>
+                <button class="btn  btn-lg btn-primary float-end mb-4" type="submit">產生報告</button>
             </form>  
         </div> 
     {% endblock %} 
