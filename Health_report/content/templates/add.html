@@ -5,13 +5,13 @@
         {% endwith %}
     {% endblock %}
     {% block mymessage %}
-        <div class="container-fluid px-4">
-            <h1 class="mt-4">建立健檢報告</h1>
+        <div class="container-fluid">
+            <h1 class="mt-4 text-black-70">建立健檢報告</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Create</li>
             </ol>
         </div>
-        <div class="container-fluid px-4">
+        <div class="container-fluid px-4 py-4 rounded-3 shadow-lg overflow-auto bg-white">
             <form action="addreport/" method="post">
                 {% csrf_token %}
                 <div class="mb-3 row">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="col">
                         <label class="form-label" for="report_year">報告建立年度：</label>
-                        <input class="form-control" type="number" name="report_year" id="report_year" placeholder="請輸入西元年份 ex.2024" required>
+                        <input class="form-control" type="text" name="report_year" id="report_year" placeholder="請輸入西元年份 ex.2024" required maxlength="4">
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -31,13 +31,13 @@
                     </div>
                     <div class="col">
                         <label class="form-label" for="pulse">脈搏：</label>
-                        <input class="form-control" type="number" name="pulse" id="pulse" placeholder="請輸入脈搏 " required>
+                        <input class="form-control" type="number" name="pulse" id="pulse" placeholder="請輸入脈搏" value="{{ pulse }}" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <div class="col">
                         <label class="form-label" for="glucose_ac">飯前葡萄糖：</label>
-                        <input class="form-control" type="number" name="glucose_ac" id="glucose_ac" placeholder="ex: 100" required>
+                        <input class="form-control" type="number" name="glucose_ac" id="glucose_ac" placeholder="ex: 100" required value="{{ glucose_ac }}">
                     </div>
                     <div class="col">
                         <label class="form-label" for="hba1c">血色素：</label>
@@ -70,8 +70,12 @@
                         <textarea class="form-control" name="abstract" id="abstract" rows="3" placeholder="請輸入摘要"></textarea>
                     </div>
                 </div> -->
-                <button class="btn  btn-lg btn-primary float-end" type="submit">預覽</button>
+                <button class="btn  btn-lg btn-warning float-end mb-3" type="submit" onclick="showLoading()">預覽</button>
             </form>
+        </div>
+        <div id="loading" class="text-center">
+            <div class="spinner-border" style="width: 6rem; height: 6rem;" role="status">
+            </div>
         </div>
        
     {% endblock %} 

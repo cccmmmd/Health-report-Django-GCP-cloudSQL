@@ -5,5 +5,16 @@
         {% endwith %}
     {% endblock %}
     {% block mymessage %}
-        <iframe class="embed-responsive-item" src="http://tibame-health-assistant.azurewebsites.net" style="width:100%; height: calc(100vh - 131px);"></iframe>
+    <div class="container-fluid">
+        <h1 class="mt-4 text-black-70">健檢小助手</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Assistant</li>
+        </ol>
+        <iframe class="embed-responsive-item" src="http://127.0.0.1:5000" style="width:100%; height: calc(100vh - 131px);"></iframe>
+        <div class="qrcode"> 
+            <b class="mb-3">LineBot 健檢小助手 <br/> ＋好友在 Line 上問答！</b>
+            <div><img style="width: 150px" src="https://qr-official.line.me/sid/L/938oabfl.png"></div>
+        </div>
+       
+    </div>     
     {% endblock %} 

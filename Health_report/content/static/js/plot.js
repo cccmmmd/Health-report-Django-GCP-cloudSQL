@@ -1,5 +1,6 @@
 let reports = JSON.parse(document.getElementById("data").innerHTML);
 // console.log(reports[0])
+reports = reports.sort((a, b) => a.report_year - b.report_year);
 
 // import Chart from 'chart.js/auto'
 

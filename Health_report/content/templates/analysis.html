@@ -20,24 +20,24 @@
         <div id="layoutSidenav">
             {% include 'sidebar.html'%}
             <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">歷年報告分析</h1>
+                <main class="px-4">
+                    <div class="container-fluid">
+                        <h1 class="mt-4 text-black-70">歷年報告分析</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Analysis</li>
                         </ol>
                     </div>
-                    <div class="container-fluid px-4">
+                    <div class="container-fluid px-4 py-4 rounded-3 shadow-lg overflow-auto bg-white">
                         <div class="mb-3 row">
                             <div class="col-lg-3 col-sm-8">
-                                <h3>選取報告：</h3>
+                                <h4>選取報告：</h4>
                                     <p>{% for r in reports %} 
                                         {{r.report_name}},
                                         {% endfor %}
                                     </p> 
                             </div>
                             <div class="col-lg-3 col-sm-8">
-                                <h3>選取年度：</h3>
+                                <h4>選取年度：</h4>
                                     <p>{% for r in reports %} 
                                         {{r.report_year}},
                                         {% endfor %}

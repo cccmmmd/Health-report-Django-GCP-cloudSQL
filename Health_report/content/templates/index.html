@@ -5,16 +5,37 @@
         {% endwith %}
     {% endblock %}
     {% block mymessage %}
-        <div class="container-fluid px-4">
-            <h1 class="mt-4">歡迎來到智能健檢</h1>
+    {{reports}}
+        <div class="container-fluid">
+            <h1 class="mt-4 text-black-70">歡迎來到智能健檢</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Home</li>
             </ol>
         </div>
-        <div class="container-fluid px-4">
-            <h3>歡迎來到智能健檢</h3>
-            <br/><br/>
-
+        <div class="mb-3 row">
+            <div class="col-lg-4 col-sm-12 mb-4">
+                <div class="px-4 py-4 rounded-3 shadow-lg overflow-auto bg-white">
+                    目前共有
+                    <div class="text-center fs-1"> {{reports_len}}</div>
+                    <span class="float-end">份報告</span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 mb-4">
+                <div class="px-4 py-4 rounded-3 shadow-lg overflow-auto bg-white">
+                    含有問題數值的報告共
+                    <div class="text-center fs-1"> {{problem_report}}</div>
+                    <span class="float-end">份</span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 mb-4">
+                <div class="px-4 py-4 rounded-3 shadow-lg overflow-auto bg-white">
+                    目前統計出次數最高的前三項數值為
+                    <div class="text-center fs-1"> {{reports_len}}</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid px-4 py-4 rounded-3 shadow-lg overflow-auto bg-white">
             <h5>主要功能：</h5>
             <ul>
                 <li>
