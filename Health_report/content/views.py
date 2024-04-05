@@ -12,22 +12,25 @@ def index(request):
     template = loader.get_template('index.html')
     problem_report = 0
     count_problem = {}
+    latest_year = 0
     for r in reports:
+        if int(r['report_year']) > latest_year:
+            latest_year = int(r['report_year'])
         if(r['problems'] != ''):
             problem_report += 1
         
         temp = r['problems'].split(',')
         for t in temp:
             if t != '':
-                count_problem[t] = 1
-        
-    print(count_problem)
-
+                if t not in count_problem:
+                    count_problem[t] = 1
+                else:
+                    count_problem[t] += 1
     context = {
-        'reports': reports,
+        'latest_year': latest_year,
+        'count_problem': json.dumps(count_problem),
         'reports_len': reports.count(),
-        'problem_report':  problem_report
-
+        'problem_report':  problem_report,
     }
     return HttpResponse(template.render(context, request))
 
@@ -57,6 +60,7 @@ def selectreport(request):
     for r in reports:
         if request.POST.get('report_%s' % r['id']):
             selected_reports.append(r)
+    
     request.session['selected_reports'] = json.dumps(selected_reports, indent = 4, sort_keys = True, default = str)
     return HttpResponseRedirect(reverse('analysis'))
 

@@ -1,5 +1,4 @@
 let reports = JSON.parse(document.getElementById("data").innerHTML);
-// console.log(reports[0])
 reports = reports.sort((a, b) => a.report_year - b.report_year);
 
 // import Chart from 'chart.js/auto'
@@ -11,12 +10,22 @@ reports = reports.sort((a, b) => a.report_year - b.report_year);
     let DP = {
         label: '舒張壓',
         data:[],
-        backgroundColor: "rgba(53, 162, 235, 0.5)"
+        type: 'line',
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
+        borderColor: "rgba(53, 162, 235, 1)",
+        pointStyle: 'circle',
+        pointRadius: 10,
+        pointHoverRadius: 15
     }
     let SP = {
         label: '收縮壓',
         data:[],
-        backgroundColor: "rgba(255, 99, 132, 0.5)"
+        type: 'line',
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        borderColor:  "rgba(255, 99, 132, 1)",
+        pointStyle: 'circle',
+        pointRadius: 10,
+        pointHoverRadius: 15
     }
     let PL = {
         label: '脈搏',
@@ -26,32 +35,58 @@ reports = reports.sort((a, b) => a.report_year - b.report_year);
     let GA = {
         label: '飯前葡萄糖',
         data:[],
-        backgroundColor: "rgb(204,178,255)"
+        type: 'line',
+        backgroundColor: "rgb(204,178,255)",
+        borderColor: "rgb(204,178,255)",
+        pointStyle: 'circle',
+        pointRadius: 10,
+        pointHoverRadius: 15
     }
     let H1 = {
-        label: '血色素',
+        label: '糖化血色素',
         data:[],
-        backgroundColor: "rgb(255,207,163)"
+        type: 'line',
+        backgroundColor: "rgb(255,207,163)",
+        borderColor: "rgb(255,207,163)",
+        pointStyle: 'circle',
+        pointRadius: 10,
+        pointHoverRadius: 15
     }
     let TC = {
         label: '總膽固醇',
         data:[],
-        backgroundColor: "rgb(228,229,231)"
+        backgroundColor: "rgb(228,229,231)",
+        borderColor: "rgb(228,229,231)",
+        pointStyle: 'circle',
+        pointRadius: 10,
+        pointHoverRadius: 15
     }
     let TG = {
         label: '三酸甘油脂',
         data:[],
-        backgroundColor: "rgb(255,178,193)"
+        backgroundColor: "rgb(255,178,193)",
+        borderColor: "rgb(255,178,193)",
+        pointStyle: 'circle',
+        pointRadius: 10,
+        pointHoverRadius: 15
     }
     let HC = {
         label: '高密度脂蛋白膽固醇',
         data:[],
-        backgroundColor: "rgb(160,208,245)"
+        backgroundColor: "rgb(160,208,245)",
+        borderColor: "rgb(160,208,245)",
+        pointStyle: 'circle',
+        pointRadius: 10,
+        pointHoverRadius: 15
     }
     let LC = {
         label: '低密度脂蛋白膽固醇',
         data:[],
-        backgroundColor: "rgb(255,230,174)"
+        backgroundColor: "rgb(255,230,174)",
+        borderColor: "rgb(255,230,174)",
+        pointStyle: 'circle',
+        pointRadius: 10,
+        pointHoverRadius: 15
     }
 
     reports.forEach(element => {
@@ -75,7 +110,7 @@ reports = reports.sort((a, b) => a.report_year - b.report_year);
     new Chart(
         document.getElementById('pic1'),
         {
-            type: 'bar',
+            type: 'line',
             data: data,
             options: {
             responsive: true,
@@ -126,7 +161,7 @@ reports = reports.sort((a, b) => a.report_year - b.report_year);
     new Chart(
         document.getElementById('pic3'),
         {
-            type: 'bar',
+            type: 'line',
             data: data,
             options: {
             responsive: true,
