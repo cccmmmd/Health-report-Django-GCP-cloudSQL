@@ -11,4 +11,5 @@ urlpatterns = [
     path('reports/selectreport/', views.selectreport, name='selectreport'), 
     path('analysis/', views.analysis, name='analysis'), 
     path('assistant/', views.assistant, name='assistant'), 
+    path('login/', views.login, name='login'), 
 ]

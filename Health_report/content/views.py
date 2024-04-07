@@ -195,3 +195,7 @@ def analysis(request):
 def assistant(request):
     template = loader.get_template('assistant.html') 
     return HttpResponse(template.render({}, request)) 
+
+def login(request):
+    template = loader.get_template('login.html') 
+    return HttpResponse(template.render({}, request)) 
