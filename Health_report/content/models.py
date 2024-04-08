@@ -3,8 +3,8 @@ from django.db import models
 # Create your models here.
 
 class User(models.Model):
-  user_name  = models.CharField(max_length=30)
-  gender = models.CharField(max_length=30)
+  user_name  = models.CharField(max_length=20)
+  gender = models.CharField(max_length=10)
   
 class Report(models.Model):
 #   user = models.ForeignKey(User, on_delete=models.CASCADE)
