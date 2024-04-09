@@ -15,51 +15,51 @@
             <form action="addreport/" method="post">
                 {% csrf_token %}
                 <div class="mb-3 row">
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12 mb-3">
                         <label class="form-label" for="report_name">健檢報告名稱：</label>
                         <input class="form-control" type="text" name="report_name" id="report_name" placeholder="請輸入健檢報告名稱" required>
                     </div>
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12">
                         <label class="form-label" for="report_year">報告建立年度：</label>
                         <input class="form-control" type="text" name="report_year" id="report_year" placeholder="請輸入西元年份 ex.2024" required maxlength="4">
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12 mb-3">
                         <label class="form-label" for="blood_pressure">血壓：</label>
                         <input class="form-control" type="text" name="blood_pressure" id="blood_pressure" placeholder="ex: 130/50 mm/hg" required>
                     </div>
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12">
                         <label class="form-label" for="pulse">脈搏：</label>
                         <input class="form-control" type="number" name="pulse" id="pulse" placeholder="請輸入脈搏 (次/分)" value="{{ pulse }}" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12 mb-3">
                         <label class="form-label" for="glucose_ac">飯前葡萄糖：</label>
                         <input class="form-control" type="number" name="glucose_ac" id="glucose_ac" placeholder="ex: 100 mg/dl" required value="{{ glucose_ac }}">
                     </div>
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12">
                         <label class="form-label" for="hba1c">  糖化血色素：</label>
                         <input class="form-control" type="float" name="hba1c" id="hba1c" placeholder="ex: 6.5 %" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12 mb-3">
                         <label class="form-label" for="t_cho">總膽固醇：</label>
                         <input class="form-control" type="number" name="t_cho" id="t_cho" placeholder="ex: 200 mg/dl" required>
                     </div>
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12">
                         <label class="form-label" for="tg">三酸甘油脂：</label>
                         <input class="form-control" type="number" name="tg" id="tg" placeholder="ex: 150 mg/dl" required>
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12 mb-3">
                         <label class="form-label" for="hdl_c">高密度脂蛋白膽固醇：</label>
                         <input class="form-control" type="number" name="hdl_c" id="hdl_c" placeholder="ex: 50 mg/dl" required>
                     </div>
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12">
                         <label class="form-label" for="ldl_c">低密度脂蛋白膽固醇：</label>
                         <input class="form-control" type="number" name="ldl_c" id="ldl_c" placeholder="ex: 130 mg/dl" required>
                     </div>

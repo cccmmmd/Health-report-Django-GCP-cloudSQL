@@ -15,7 +15,7 @@
             <form action="savereport/" method="post">
                 {% csrf_token %}
                 <div class="mb-3 row">
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12 mb-3">
                         <div class="card">
                             <div class="card-body">
                                 <b>健檢報告名稱:  </b>
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12">
                         <div class="card">
                             <div class="card-body">
                                 <b>報告建立年度: </b>
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12 mb-3">
                         {% if problem.diastolic_pressure %}
                             <div  class="card bg-warning">
                         {% else %}
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12">
                         {% if problem.systolic_pressure %}
                             <div  class="card bg-warning">
                         {% else %}
@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12 mb-3">
                         <div  class="card">
                             <div class="card-body">
                                 <b>脈搏:  </b>
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12">
                         {% if problem.glucose_ac %}
                             <div  class="card bg-warning">
                         {% else %}
@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12 mb-3">
                         {% if problem.hba1c %}
                             <div  class="card bg-warning">
                         {% else %}
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12">
                         {% if problem.t_cho %}
                             <div  class="card bg-warning">
                         {% else %}
@@ -128,7 +128,7 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12 mb-3">
                         {% if problem.tg %}
                             <div  class="card bg-warning">
                         {% else %}
@@ -144,7 +144,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-lg-6 col-sm-12">
                         {% if problem.hdl_c %}
                             <div  class="card bg-warning">
                         {% else %}
@@ -162,7 +162,7 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <div class="col-6">
+                    <div class="col-lg-6 col-sm-12">
                         {% if problem.ldl_c %}
                             <div  class="card bg-warning">
                         {% else %}
