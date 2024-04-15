@@ -164,7 +164,7 @@ def savereport(request):
 def one_report(request, id):
     # report = Report.objects.get(id=id)
     report = Report.objects.filter(id=id).values() 
-    template = loader.get_template('one_result.html') 
+    template = loader.get_template('one_report.html') 
     args = Arg.objects.all().values() 
     
     units = {}

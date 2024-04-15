@@ -1,0 +1,195 @@
+{% extends 'basic.html'%}
+    {% block with_variables %}
+        {% with name="Result" %}
+            {{ block.super }}
+        {% endwith %}
+    {% endblock %}
+    {% block mymessage %}
+        <div class="container-fluid">
+            <h1 class="mt-4">報告分析</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Result</li>
+            </ol>
+        </div>
+        <div class="container-fluid px-4 py-4 rounded-3 shadow-lg overflow-auto bg-white">
+            {% csrf_token %}
+            <div class="mb-3 row">
+                <div class="col-lg-6 col-sm-12 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>健檢報告名稱:  </b>
+                            {{report.report_name}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>報告建立年度: </b>
+                            {{report.report_year}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-lg-6 col-sm-12 mb-3">
+                    {% if problem.diastolic_pressure %}
+                        <div  class="card bg-warning">
+                    {% else %}
+                        <div  class="card">
+                    {% endif %}
+                        <div class="card-body">
+                            <b>舒張壓:  </b>
+                            {{report.diastolic_pressure}}
+                            &nbsp;{{units.diastolic_pressure}}
+                            {% if problem.diastolic_pressure %}
+                            <span class="text-danger float-end">{{normal.diastolic_pressure}}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    {% if problem.systolic_pressure %}
+                        <div  class="card bg-warning">
+                    {% else %}
+                        <div  class="card">
+                    {% endif %}
+                        <div class="card-body">
+                            <b>收縮壓: </b>
+                            {{report.systolic_pressure}}
+                            &nbsp;{{units.systolic_pressure}}
+                            {% if problem.systolic_pressure %}
+                            <span class="text-danger float-end">{{normal.systolic_pressure}}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-lg-6 col-sm-12 mb-3">
+                    <div  class="card">
+                        <div class="card-body">
+                            <b>脈搏:  </b>
+                            {{report.pulse}}
+                            &nbsp;{{units.pulse}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    {% if problem.glucose_ac %}
+                        <div  class="card bg-warning">
+                    {% else %}
+                        <div  class="card">
+                    {% endif %}
+                        <div class="card-body">
+                            <b>飯前葡萄糖:  </b>
+                            {{report.glucose_ac}}
+                            &nbsp;{{units.glucose_ac}}
+                            {% if problem.glucose_ac %}
+                            <span class="text-danger float-end">{{normal.glucose_ac}}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-lg-6 col-sm-12 mb-3">
+                    {% if problem.hba1c %}
+                        <div  class="card bg-warning">
+                    {% else %}
+                        <div  class="card">
+                    {% endif %}
+                        <div class="card-body">
+                            <b>糖化血色素:  </b>
+                            {{report.hba1c}}
+                            &nbsp;{{units.hba1c}}
+                            {% if problem.hba1c %}
+                            <span class="text-danger float-end">{{normal.hba1c}}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    {% if problem.t_cho %}
+                        <div  class="card bg-warning">
+                    {% else %}
+                        <div  class="card">
+                    {% endif %}
+                        <div class="card-body">
+                            <b>總膽固醇:  </b>
+                            {{report.t_cho}}
+                            &nbsp;{{units.t_cho}}
+                            {% if problem.t_cho %}
+                            <span class="text-danger float-end">{{normal.t_cho}}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-lg-6 col-sm-12 mb-3">
+                    {% if problem.tg %}
+                        <div  class="card bg-warning">
+                    {% else %}
+                        <div  class="card">
+                    {% endif %}
+                        <div class="card-body">
+                            <b>三酸甘油脂:  </b>
+                            {{report.tg}}
+                            &nbsp;{{units.tg}}
+                            {% if problem.tg %}
+                            <span class="text-danger float-end">{{normal.tg}}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    {% if problem.hdl_c %}
+                        <div  class="card bg-warning">
+                    {% else %}
+                        <div  class="card">
+                    {% endif %}
+                        <div class="card-body">
+                            <b>高密度脂蛋白膽固醇:  </b>
+                            {{report.hdl_c}}
+                            &nbsp;{{units.hdl_c}}
+                            {% if problem.hdl_c %}
+                            <span class="text-danger float-end">{{normal.hdl_c}}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                    <div class="col-lg-6 col-sm-12">
+                        {% if problem.ldl_c %}
+                            <div  class="card bg-warning">
+                        {% else %}
+                            <div  class="card">
+                        {% endif %}
+                            <div class="card-body">
+                                <b>低密度脂蛋白膽固醇:  </b>
+                                {{report.ldl_c}}
+                                &nbsp;{{units.ldl_c}}
+                                {% if problem.ldl_c %}
+                                <span class="text-danger float-end">{{normal.ldl_c}}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>AI 生成摘要:  </h4>
+                                <pre>{{report.abstract}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="/reports"><button class="btn  btn-lg btn-warning float-end" type="submit">關閉</button></a>
+           
+        </div> 
+               
+    {% endblock %} 
