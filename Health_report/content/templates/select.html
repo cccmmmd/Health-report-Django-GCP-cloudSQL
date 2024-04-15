@@ -37,6 +37,7 @@
                                     <td class="text-center" style="max-width: 100px;">{{ r.report_year }}</td>
                                     <td class="text-left" style="max-width: 200px; min-width: 140px;">{% if r.problems %}{{ r.problems }} {% else %} 無 {% endif %}</td>
                                     <td class="text-truncate" style="max-width: 350px;">{{ r.abstract }}</td>
+                                    <td class="text-center"><a href="one_report/{{r.id}}">檢視報告</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

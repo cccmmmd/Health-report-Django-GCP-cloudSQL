@@ -9,6 +9,7 @@ urlpatterns = [
     path('one_result/savereport/', views.savereport, name='savereport'), 
     path('reports/', views.select, name='select'), 
     path('reports/selectreport/', views.selectreport, name='selectreport'), 
+    path('reports/one_report/<int:id>', views.one_report, name='one_report'),
     path('analysis/', views.analysis, name='analysis'), 
     path('assistant/', views.assistant, name='assistant'), 
     path('login/', views.login, name='login'), 

@@ -40,7 +40,6 @@ def create(request):
     if request.session.get('problem_values'):
         del request.session['problem_values']
 
-
     template = loader.get_template('add.html') 
     return HttpResponse(template.render({}, request)) 
 
@@ -67,7 +66,6 @@ def selectreport(request):
 def addreport(request):
     global excloud_list
     arg = Arg.objects.all().values() 
-    print(arg)
     report_data = {}
     for p in request.POST:
         report_data[p] = request.POST[p]
@@ -79,8 +77,6 @@ def addreport(request):
             if (r == a['name'] == 'hba1c'):
                 if((a['max'] and float(report_data[r]) > a['max']) or
                     (a['min'] and float(report_data[r]) < a['min'])):
-
-                    print(r,'@@@', a)
                     problem_values[r] = (float(report_data[r]))
             else:   
                 if(r == a['name']):
@@ -165,9 +161,51 @@ def savereport(request):
     del request.session['problem_values']
     return HttpResponseRedirect(reverse('add'))
 
+def one_report(request, id):
+    # report = Report.objects.get(id=id)
+    report = Report.objects.filter(id=id).values() 
+    template = loader.get_template('one_result.html') 
+    args = Arg.objects.all().values() 
+    
+    units = {}
+    normal = {}
+    for a in args:
+        st = '正常值為'
+        units[a['name']] = a['unit']
+        if a['max']: st += '低於' + str(a['max'])
+        if a['min']: st += '高於' + str(a['min'])
+        if a['m_min']: st += '男性高於' + str(a['m_min'])
+        if a['f_min']: st += '女性高於' + str(a['f_min'])
+        normal[a['name']] = st
+    
+    problem_values = {}
+    
+    for r in report:
+        for k in r:
+            for a in args:
+                if (k == a['name'] == 'hba1c'):
+                    if((a['max'] and float(r[k]) > a['max']) or
+                        (a['min'] and float(r[k]) < a['min'])):
+
+                        problem_values[k] = (float(r[k]))
+                else:   
+                    if(k == a['name']):
+                        if((a['max'] and int(float(r[k])) > a['max']) or 
+                        (a['min'] and int(float(r[k])) < a['min']) or 
+                        (a['m_min'] and int(float(r[k])) < a['m_min'])):
+                        # (a['f_min'] and int(float(r[k])) < a['f_min'])):
+                            problem_values[k] =int(float(r[k]))
+    
+    print(problem_values)
+    context = { 
+        'report': report[0],
+        'problem':  problem_values,
+        'units': units,
+        'normal': normal
+    }
+    return HttpResponse(template.render(context, request)) 
 
 def analysis(request):
-
     report_summary = ''
     template = loader.get_template('analysis.html') 
     selected_reports = request.session['selected_reports']
@@ -199,3 +237,4 @@ def assistant(request):
 def login(request):
     template = loader.get_template('login.html') 
     return HttpResponse(template.render({}, request)) 
+
