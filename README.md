@@ -6,6 +6,7 @@
 * Chart.js
 * Bootstrap
 * PostgreSQL
+* Cloud SQL for PostgreSQL
   
 ![screencapture-127-0-0-1-8000-2024-04-09-02_46_42](https://github.com/cccmmmd/Health-report-Django-GCP-cloudSQL/assets/137893455/69b0f138-dc2c-4e89-97ee-658ba02fd877)
 
